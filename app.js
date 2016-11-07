@@ -1,5 +1,10 @@
 var express = require( 'express' );
 var app = express(); // creates an instance of an express application
+var nunjucks = require('nunjucks');
+
+nunjucks.configure('views', {noCache: true});
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
 
 app.use('/', (req, res, next) => {
 	console.log(req.method);
@@ -13,7 +18,11 @@ app.use('/special', (req, res, next) => {
 
 app.get('/', (req, res, next) => {
 	res.send('hello world');
-	//next();
+});
+
+app.get('/nunjucks', (req, res, next) => {
+  var ppl = [{name: 'Gandalf'}, {name: 'Hermione'}, {name: 'Frodo'}];
+  res.render('index.html', {title: 'An Example', people: ppl});
 });
 
 app.get('/news', (req, res) => res.send('mass hysteria'));
