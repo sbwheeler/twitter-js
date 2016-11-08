@@ -1,3 +1,5 @@
+'use strict'
+
 var _ = require('lodash');
 
 var data = [];
@@ -38,4 +40,8 @@ var getFakeTweet = function() {
 for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
+
+module.exports.add( "Sam",  "Fullstack is great!" );
+
+module.exports.add( "Sam",  "I love BBG!" );
 
