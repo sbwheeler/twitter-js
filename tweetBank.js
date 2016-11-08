@@ -2,6 +2,7 @@ var _ = require('lodash');
 
 var data = [];
 
+
 function add (name, content) {
   data.push({ name: name, content: content });
 }
@@ -9,6 +10,7 @@ function add (name, content) {
 function list () {
   return _.cloneDeep(data);
 }
+
 
 function find (properties) {
   return _.cloneDeep(_.filter(data, properties));
@@ -37,4 +39,3 @@ for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-console.log(data);
