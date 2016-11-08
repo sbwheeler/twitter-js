@@ -3,7 +3,12 @@
 var express = require( 'express' );
 var app = express(); // creates an instance of an express application
 var nunjucks = require('nunjucks');
-const routes = require('./routes/')
+const routes = require('./routes/');
+const bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.use(urlencodedParser);
+app.use(jsonParser);
 app.use('/', routes);
 
 nunjucks.configure('views', {noCache: true});
